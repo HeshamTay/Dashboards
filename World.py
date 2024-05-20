@@ -32,6 +32,6 @@ final_df = filtered_df[filtered_df['Country Name'].isin(selected_countries)]
 
 if selected_measurement:
    fig = px.bar(final_df, x='Country Name', y=selected_measurement[0], height=400, hover_data={'Country Name', selected_measurement[0]})
-    st.plotly_chart(fig, use_container_width=True)
+   st.plotly_chart(fig, use_container_width=True)
 else:
     st.write("Please select at least one measurement.")
