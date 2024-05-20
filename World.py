@@ -10,7 +10,7 @@ years = list(range(2001, 2020))
 selected_year = st.selectbox('Select a Year', years)
 
 measures = [i for i in df.columns.tolist() if i not in ['Year', 'Country Name', 'Country Code', 'Region', 'IncomeGroup']]
-selected_measures = st.multiselect('Select the measure you want to be visualized',measures, max_selections=1)
+selected_measure = st.multiselect('Select the measure you want to be visualized',measures, max_selections=1)
 # Get the unique regions
 regions = df['Region'].unique().tolist()
 
