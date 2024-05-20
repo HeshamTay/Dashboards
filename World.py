@@ -27,11 +27,12 @@ countries = filtered_df['Country Name'].unique().tolist()
 selected_countries = st.multiselect('Select Countries', countries)
 
 # Filter the DataFrame
-final_df = filtered_df[filtered_df['Country Name'].isin(selected_countries)]
+filtered_df = filtered_df[filtered_df['Country Name'].isin(selected_countries)]
 
+final_df = filtered_df[filtered_df['Year'] == selected_year]
 
 if selected_measurement:
-   fig = px.bar(final_df, x='Country Name', y=selected_measurement[0], height=400, hover_data={'Country Name', selected_measurement[0]})
+   fig = px.bar(final_df, x='Country Name', y=selected_measurement[0], height=700, width=700)
    st.plotly_chart(fig, use_container_width=True)
 else:
     st.write("Please select at least one measurement.")
