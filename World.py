@@ -9,8 +9,8 @@ st.title(" :earth_africa: Prosperity Measures")
 years = list(range(2001, 2020))
 selected_year = st.selectbox('Select a Year', years)
 
-measurements = [i for i in df.columns.tolist() if i not in ['Year', 'Country Name', 'Country Code', 'Region', 'IncomeGroup']]
-selected_measurement = st.multiselect('Select the measurement you want to be visualized',measurements, max_selections=1)
+measures = [i for i in df.columns.tolist() if i not in ['Year', 'Country Name', 'Country Code', 'Region', 'IncomeGroup']]
+selected_measures = st.multiselect('Select the measure you want to be visualized',measures, max_selections=1)
 # Get the unique regions
 regions = df['Region'].unique().tolist()
 
@@ -31,8 +31,8 @@ filtered_df = filtered_df[filtered_df['Country Name'].isin(selected_countries)]
 
 final_df = filtered_df[filtered_df['Year'] == selected_year]
 
-if selected_measurement:
-   fig = px.bar(final_df, x='Country Name', y=selected_measurement[0], height=700, width=700)
+if selected_measure:
+   fig = px.bar(final_df, x='Country Name', y=selected_measure[0], height=700, width=700)
    st.plotly_chart(fig, use_container=True)
 else:
-    st.write("Please select at least one measurement.")
+    st.write("Please select the measure you want to view.")
