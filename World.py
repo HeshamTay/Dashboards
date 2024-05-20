@@ -33,6 +33,6 @@ final_df = filtered_df[filtered_df['Year'] == selected_year]
 
 if selected_measurement:
    fig = px.bar(final_df, x='Country Name', y=selected_measurement[0], height=700, width=700)
-   st.plotly_chart(fig, use_container_width=True)
+   fig.update_layout(yaxis=dict(range=[0, filtered_df['value'].max()]))  # Adjust range to start from zero
 else:
     st.write("Please select at least one measurement.")
